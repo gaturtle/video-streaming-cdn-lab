@@ -1,0 +1,15 @@
+[Unit]
+Description=Video Streaming Lab - Origin (Spring Boot)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/streaminglab/backend
+Environment=ORIGIN_STORAGE_PATH=/opt/streaminglab/media
+ExecStart=/usr/bin/java -Xmx384m -jar /opt/streaminglab/backend/target/origin-0.0.1-SNAPSHOT.jar
+Restart=on-failure
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
